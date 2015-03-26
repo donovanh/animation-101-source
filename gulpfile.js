@@ -178,8 +178,29 @@ gulp.task('serve:prod', function () {
   });
 });
 
+// Place the CSS in the head of the document
+var smoosher = require('gulp-smoosher');
+
+gulp.task('smoosher', function () {
+  gulp.src('serve/**/*.html')
+  .pipe(smoosher({
+      base: 'serve'
+  }))
+  .pipe(gulp.dest('temp'));
+});
+
+// Inline the CSS for making emails
+var inline = require('gulp-mc-inline-css');
+var mc_config = require('./mc_config.json');
+
+gulp.task('inliner', function() {
+  gulp.src('./output/**/*.html')
+    .pipe(inline(mc_config.APIKEY))
+    .pipe(gulp.dest('./processed'));
+});
+
 // Default task, run when just writing 'gulp' in the terminal
-gulp.task('default', ['serve:dev', 'watch']);
+gulp.task('default', ['serve:dev', 'smoosher', 'inliner', 'watch']);
 
 // Checks your CSS, JS and Jekyll for errors
 gulp.task('check', ['jslint', 'doctor'], function () {
