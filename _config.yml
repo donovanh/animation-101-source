@@ -1,0 +1,36 @@
+# Title, decription, tagline and URL for your site
+# Can be used in your theme by calling 'site.title' and so on
+title: CSS Animation Courses
+description: CSS animation tips, articles and more. Follow @cssanimation on Twitter.
+url: http://localhost:3000
+
+# Used so Jekyll outputs the site correctly so Gulp can do what it wants
+source: src
+destination: serve
+
+# general setting for Jekyll
+googleAnalytics: UA-3481417-30
+
+# _config.build.yml overwrites these options when you run `gulp build`
+# Enables future posts (posts with dates in the future) and drafts
+future: true
+show_drafts: true
+# Disables the more accurate related posts for faster generating of the site
+lsi: false
+# Only make the last 10 posts so generating isn't slow
+limit_posts: 10
+
+# Permalink structure and pagination options
+relative_permalinks: true
+permalink: /:title
+paginate: 5
+paginate_path: 'page:num'
+excerpt_separator: '<!--more-->'
+
+# Markdown library
+markdown: redcarpet
+# Markdown library options
+redcarpet:
+  extensions: ['no_intra_emphasis', 'tables', 'fenced_code_blocks', 'autolink', 'smart',
+              'strikethrough', 'superscript', 'underline', 'highlight', 'footnotes']
+highlighter: true

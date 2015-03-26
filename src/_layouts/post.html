@@ -1,0 +1,79 @@
+---
+layout: default
+---
+{% if page.custom_header %}
+  <section class="post-header">
+{% else %}
+  <section class="post-header shorter">
+{% endif %}
+    <section class="logo">
+      <a href="/">
+        <section class="svg-logo"><a href="/"><img src="/assets/images/logo.svg" alt="CSS Animation"></a></section>
+      </a>
+    </section>
+    {% if page.custom_header %}
+      <section class="demo">
+        {% include {{ page.custom_header }} %}
+      </section>
+    {% endif %}
+    <div class="absolute-nav">
+      {% include nav.html %}
+    </div>
+  </section>
+<section class="container page-content">
+  <section class="row">
+    <article class="post-content nine columns">
+      <h1 class="post-title">{{ page.title }}</h1>
+      {{ content }}
+
+      <section class="quote-container">
+        <section class="rocky">
+          <img src="/assets/images/rocky.svg">
+        </section>
+        <blockquote>
+          <p>If you enjoyed this article, <a href="https://twitter.com/intent/tweet/?text={{page.title | page.tweet_text | escape}}&url={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | cgi_escape}}&via=cssanimation" target="_blank">share it</a>!</p>
+        </blockquote>
+      </section>
+      <h3>Want to learn more about CSS animation?</h3>
+      <article class="content-box wow bounceIn">
+        <section class="course">
+          <div class="course-image four columns">
+            <a href="/courses/animation-101/"><img src="/assets/images/courses/animation_101/badge.svg" class="footer-signup-badge" alt="CSS Animation 101"></a>
+          </div>
+          <div class="course-details eight columns">
+            <h2><a href="/courses/animation-101/">Animation 101</a></h2>
+            <p>An email course to get you started learning all about transitions, animations and how to apply them to your work.</p>
+            <p class="button"><a href="/courses/animation-101/">More details</a></p>
+          </div>
+          <span class="clearfix"></span>
+        </section>
+      </article>
+
+    </article>
+    <aside class="post-aside three columns">
+      {% if page.demo_url %}
+        <section class="demo-link">
+          <a href="{{page.demo_url}}" class="button primary-button">Demo</a>
+        </section>
+      {% endif %}
+      <section class="sidebar-email-signup">
+        <h4>Get weekly updates</h4>
+        <form action="//hop.us7.list-manage.com/subscribe/post?u=07ab661c8a6f6b3ec4c98c791&amp;id=169820d65d" method="post" class="validate" target="_blank" novalidate>
+          <input type="email" value="" placeholder="Your email" name="EMAIL" class="email">
+          <div style="position: absolute; left: -5000px;"><input type="text" name="b_07ab661c8a6f6b3ec4c98c791_7daf5f7db7" value=""></div>
+          <input type="submit" value="Add me" name="subscribe" class="button">
+        </form>
+      </section>
+      <section class="course-sidebar wow bounceIn">
+        <h3>Enrolling now!</h3>
+        <section class="course">
+            <a href="/courses/animation-101/"><img src="/assets/images/courses/animation_101/badge.svg" alt="CSS Animation 101"></a>
+            <h3><a href="/courses/animation-101/">Animation 101</a></h3>
+            <p>Learn the essentials of CSS animation with an email and a few minutes each day</p>
+          </div>
+          <span class="clearfix"></span>
+        </section>
+      </section>
+    </aside>
+  </section>
+</section>
