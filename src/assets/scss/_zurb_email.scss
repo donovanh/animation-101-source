@@ -40,7 +40,7 @@ a { color: #2BA6CB;}
 	display: inline-block;
 }
 
-p.callout {
+.callout {
 	padding:15px;
 	background-color:#ECF8FF;
 	margin-bottom: 15px;
@@ -48,6 +48,14 @@ p.callout {
 .callout a {
 	font-weight:bold;
 	color: #2BA6CB;
+}
+.source {
+  text-align: center;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.source a {
+  color: #999;
 }
 
 table.social {
@@ -95,10 +103,15 @@ table.body-wrap { width: 100%;}
 table.footer-wrap { width: 100%;	clear:both!important;
 background-color: #333; min-height: 4em;
 }
-.footer-wrap .container .content  p {  min-height: 4em; padding-top:15px;}
+.footer-wrap .container .content  p {  min-height: 4em; padding-top:15px; color: #eee; font-size: 14px;}
+
 .footer-wrap .container .content a {
 	color: #fff;
   font-weight: bold;
+}
+
+.address {
+  color: #999;
 }
 
 
@@ -110,7 +123,7 @@ font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; li
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
 
-h1 { font-weight:200; font-size: 32px; color: #035F4E; text-align: center; margin: 28px 0 20px;}
+h1 { font-weight:200; font-size: 32px; color: #035F4E; text-align: center; margin-top: 0;}
 h2 { font-weight:200; font-size: 22px; margin-top: 20px;}
 h3 { font-weight:200; font-size: 18px; margin-top: 20px;}
 h4 { font-weight:500; font-size: 16px;}

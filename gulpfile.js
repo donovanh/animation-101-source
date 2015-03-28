@@ -149,7 +149,7 @@ gulp.task('doctor', $.shell.task('jekyll doctor'));
 // BrowserSync will serve our site on a local server for us and other devices to use
 // It will also autoreload across all devices as well as keep the viewport synchronized
 // between them.
-gulp.task('serve:dev', ['styles', 'jekyll:dev'], function () {
+gulp.task('serve:dev', ['styles', 'jekyll:dev', 'smoosher'], function () {
   bs = browserSync({
     notify: true,
     // tunnel: '',
@@ -162,9 +162,9 @@ gulp.task('serve:dev', ['styles', 'jekyll:dev'], function () {
 // These tasks will look for files that change while serving and will auto-regenerate or
 // reload the website accordingly. Update or add other files you need to be watched.
 gulp.task('watch', function () {
-  gulp.watch(['src/**/*.md', 'src/**/*.html', 'src/**/*.xml', 'src/**/*.txt', 'src/**/*.js'], ['jekyll-rebuild']);
+  gulp.watch(['src/**/*.md', 'src/**/*.html', 'src/**/*.xml', 'src/**/*.txt', 'src/**/*.js'], ['jekyll-rebuild', 'smoosher']);
   gulp.watch(['serve/assets/stylesheets/*.css', 'serve/assest/javascript/**/*.js'], reload);
-  gulp.watch(['src/assets/scss/**/*.scss'], ['styles']);
+  gulp.watch(['src/assets/scss/**/*.scss'], ['styles', 'smoosher']);
 });
 
 // Serve the site after optimizations to see that everything looks fine
@@ -180,27 +180,21 @@ gulp.task('serve:prod', function () {
 
 // Place the CSS in the head of the document
 var smoosher = require('gulp-smoosher');
+// Inline the CSS for making emails
+var inline = require('gulp-mc-inline-css');
+var mc_config = require('./mc_config.json');
 
 gulp.task('smoosher', function () {
   gulp.src('serve/**/*.html')
   .pipe(smoosher({
       base: 'serve'
   }))
-  .pipe(gulp.dest('temp'));
-});
-
-// Inline the CSS for making emails
-var inline = require('gulp-mc-inline-css');
-var mc_config = require('./mc_config.json');
-
-gulp.task('inliner', function() {
-  gulp.src('./output/**/*.html')
-    .pipe(inline(mc_config.APIKEY))
-    .pipe(gulp.dest('./processed'));
+  .pipe(inline(mc_config.APIKEY))
+  .pipe(gulp.dest('processed'));
 });
 
 // Default task, run when just writing 'gulp' in the terminal
-gulp.task('default', ['serve:dev', 'smoosher', 'inliner', 'watch']);
+gulp.task('default', ['serve:dev', 'watch']);
 
 // Checks your CSS, JS and Jekyll for errors
 gulp.task('check', ['jslint', 'doctor'], function () {

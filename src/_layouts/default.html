@@ -8,33 +8,35 @@
     <title>CSS Animation Courses</title>
 
     <!-- smoosh -->
-    <link rel="stylesheet" href="/assets/stylesheets/main.css">
-  <!-- endsmoosh -->
+      <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <!-- endsmoosh -->
 
   </head>
 
+  <body style="background-color: #fcf5f2;margin: 0;">
+
   {% include header.html %}
 
-  <!-- BODY -->
-  <table class="body-wrap">
-    <tr>
-      <td></td>
-      <td class="container">
 
-        <div class="content">
-        <table>
-          <tr>
-            <td>
-              {{ content }}
-            </td>
-          </tr>
-        </table>
-        </div><!-- /content -->
+  <div mc:edit="body-content">
 
-      </td>
-      <td></td>
-    </tr>
-  </table><!-- /BODY -->
+    <table class="body-wrap">
+      <tr>
+        <td></td>
+        <td class="container">
+
+          <div class="content">
+          <!-- COPY -->
+          {{ content }}
+          <!-- /COPY -->
+          </div>
+
+        </td>
+        <td></td>
+      </tr>
+    </table>
+    <!-- /COPY -->
+  </div>
 
   {% include footer.html %}
 
