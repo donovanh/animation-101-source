@@ -149,7 +149,7 @@ gulp.task('doctor', $.shell.task('jekyll doctor'));
 // BrowserSync will serve our site on a local server for us and other devices to use
 // It will also autoreload across all devices as well as keep the viewport synchronized
 // between them.
-gulp.task('serve:dev', ['styles', 'jekyll:dev', 'smoosher'], function () {
+gulp.task('serve:dev', ['styles', 'jekyll:dev'], function () {
   bs = browserSync({
     notify: true,
     // tunnel: '',
@@ -162,9 +162,9 @@ gulp.task('serve:dev', ['styles', 'jekyll:dev', 'smoosher'], function () {
 // These tasks will look for files that change while serving and will auto-regenerate or
 // reload the website accordingly. Update or add other files you need to be watched.
 gulp.task('watch', function () {
-  gulp.watch(['src/**/*.md', 'src/**/*.html', 'src/**/*.xml', 'src/**/*.txt', 'src/**/*.js'], ['jekyll-rebuild', 'smoosher']);
+  gulp.watch(['src/**/*.md', 'src/**/*.html', 'src/**/*.xml', 'src/**/*.txt', 'src/**/*.js'], ['jekyll-rebuild']);
   gulp.watch(['serve/assets/stylesheets/*.css', 'serve/assest/javascript/**/*.js'], reload);
-  gulp.watch(['src/assets/scss/**/*.scss'], ['styles', 'smoosher']);
+  gulp.watch(['src/assets/scss/**/*.scss'], ['styles']);
 });
 
 // Serve the site after optimizations to see that everything looks fine
@@ -208,4 +208,8 @@ gulp.task('build', ['jekyll:prod', 'styles'], function () {});
 // it and outputs it to './site'
 gulp.task('publish', ['clean:prod', 'build'], function () {
   gulp.start('html', 'copy', 'images', 'tip-images', 'copy-js', 'fonts');
+});
+
+gulp.task('process', [], function() {
+  gulp.start('smoosher');
 });

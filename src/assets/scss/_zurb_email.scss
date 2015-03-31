@@ -50,12 +50,23 @@ a { color: #2BA6CB;}
 	color: #2BA6CB;
 }
 .source {
+  font-size: 12px;
   text-align: center;
   margin: 0 0 20px;
   padding: 0;
 }
 .source a {
   color: #999;
+}
+code, pre {
+  background: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: Courier New,Courier, monospace;
+}
+pre {
+  margin: 24px auto;
+  padding: 16px;
 }
 
 table.social {
