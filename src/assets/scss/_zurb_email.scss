@@ -40,15 +40,6 @@ a { color: #2BA6CB;}
 	display: inline-block;
 }
 
-.callout {
-	padding:15px;
-	background-color:#ECF8FF;
-	margin-bottom: 15px;
-}
-.callout a {
-	font-weight:bold;
-	color: #2BA6CB;
-}
 .source {
   font-size: 12px;
   text-align: center;
@@ -67,7 +58,12 @@ code, pre {
 pre {
   margin: 24px auto;
   padding: 16px;
+  overflow: scroll;
 }
+pre code {
+  display: block;
+}
+
 
 table.social {
 /* 	padding:15px; */
@@ -188,6 +184,11 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
   border-radius: 16px;
   padding: 16px;
   margin: 16px 0;
+}
+
+.example img {
+  border: 1em solid #fff;
+  border-radius: 16px;
 }
 
 .callout h2 {
